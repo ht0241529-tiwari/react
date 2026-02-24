@@ -1,5 +1,6 @@
-import conf from '../conf.js';
-import { Client, Account ,ID} from 'appwrite';
+import conf from '../conf/conf.js';
+import { Client, Account ,ID} from "appwrite";
+
 
 export class AuthService{
     client=new Client();
@@ -42,9 +43,13 @@ export class AuthService{
         try{
             return await this.account.get();
         }
-        catch(error){
-            console.log("Error in getCurrentUser:", error);
+       catch (error) {
+        // If the error code is 401, it just means no one is logged in. 
+        // We can ignore it or log a simple message.
+        if(error.code !== 401) {
+            console.log("Appwrite service :: getCurrentUser :: error", error);
         }
+    }
         return null;
     }
     
@@ -57,6 +62,7 @@ export class AuthService{
     }
 
 }
+
 
 const authService=new AuthService();
 
