@@ -1,5 +1,5 @@
 import {configureStore} from '@reduxjs/toolkit';
-import authSlice from './authSlice';
+import authSlice from './AuthSlice';
 
 const store = configureStore({
     reducer: {
@@ -10,7 +10,6 @@ const store = configureStore({
 
 
 export default store;
-
 
 //ya imp flow hai agar nahi samja to chatgpt karo
 // Component: dispatch(login("Harsh"))
